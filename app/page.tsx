@@ -10,6 +10,10 @@ const pages = [
     title: 'project gallery',
     href: '/project-gallery',
   },
+  {
+    title: 'infinite text move',
+    href:'/infinite-text'
+  }
 ];
 
 export default function Home() {
