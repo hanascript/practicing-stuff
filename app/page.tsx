@@ -18,6 +18,10 @@ const pages = [
     title: 'card parallax',
     href: '/card-parallax',
   },
+  {
+    title: 'parallax section',
+    href: '/parallax-section',
+  },
 ];
 
 export default function Home() {

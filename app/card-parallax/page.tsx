@@ -1,10 +1,10 @@
 'use client';
 
-import { Cardx } from './_components/cardx';
-import { useEffect, useRef } from 'react';
-import { projects } from './_components/data';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll } from 'framer-motion';
 import Lenis from 'lenis';
+import { useEffect, useRef } from 'react';
+import { Cardx } from './_components/cardx';
+import { projects } from './_components/data';
 
 export default function CardParallax() {
   const container = useRef<HTMLDivElement>(null);
@@ -20,12 +20,12 @@ export default function CardParallax() {
     });
 
     // Use requestAnimationFrame to continuously update the scroll
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
 
-requestAnimationFrame(raf);
+    requestAnimationFrame(raf);
   }, []);
 
   return (
