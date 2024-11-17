@@ -22,6 +22,10 @@ const pages = [
     title: 'parallax section',
     href: '/parallax-section',
   },
+  {
+    title: 'preloader',
+    href: '/preloader',
+  },
 ];
 
 export default function Home() {
