@@ -12,8 +12,12 @@ const pages = [
   },
   {
     title: 'infinite text move',
-    href:'/infinite-text'
-  }
+    href: '/infinite-text',
+  },
+  {
+    title: 'card parallax',
+    href: '/card-parallax',
+  },
 ];
 
 export default function Home() {

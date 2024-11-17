@@ -74,3 +74,24 @@ body {
     @apply w-[80px] h-[80px] rounded-full bg-blue-600 absolute pointer-events-none z-10 flex items-center justify-center text-sm;
   }
 }
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
