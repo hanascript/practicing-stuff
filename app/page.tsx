@@ -26,6 +26,10 @@ const pages = [
     title: 'preloader',
     href: '/preloader',
   },
+  {
+    title: 'wave shader',
+    href: '/wave-shader',
+  },
 ];
 
 export default function Home() {
