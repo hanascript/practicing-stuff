@@ -8,7 +8,10 @@ export const vertex = `
   uniform float uWaveLength;
   uniform float uTime;
 
+  varying vec2 vUv;
+
   void main() {
+    vUv = uv;
     vec3 newPosition = position;
     float wave = uAmplitude * sin(position.x * uWaveLength + uTime);
     newPosition.z += wave;
@@ -17,7 +20,25 @@ export const vertex = `
 `;
 
 export const fragment = `
+  uniform sampler2D uTexture;
+  varying vec2 vUv;
+
   void main() {
-    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+    vec4 color = texture2D(uTexture, vUv);
+
+    gl_FragColor = color;
   }
 `;
+
+/**
+ * 
+ * 
+ * vec4 color = vec4(0.5, 0.5, 0.5, 1.0);
+
+    if (vUv.x >= 0.0 && vUv.x <= 1.0 && vUv.y >= 0.0 && vUv.y <= 1.0) {
+      color = texture2D(uTexture, vUv);
+    }
+ * 
+ * 
+ * 
+ */

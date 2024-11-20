@@ -25,5 +25,11 @@ Now that we have the wave, we need to be able to animate it
 - we will create a time value that will increase at every frame and pass it to the shader and add it to the waveLength
 - This will create a wave that moves from left to right because we are adding it inside the sin function which always returns a value between -1 and 1
 
+Next step is adding an image on top of the wave
+unfortunately since react19 a lot of hooks are not working. Using claudeAI to create a custom hook instead
+- the custom hook takes in the url and the uniforms
+- inside the hook we create a texture loader and load the texture
+- then we configure the texture
+- then we update the uniforms with the texture
 
 

@@ -1,10 +1,17 @@
-import React, { useRef } from 'react';
-import { useControls } from 'leva';
-import { vertex, fragment } from './shader';
-import { ShaderMaterial } from 'three';
+import { useAspect, useTexture } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
+import { useControls } from 'leva';
+import { useRef } from 'react';
+import { ShaderMaterial } from 'three';
+import { fragment, vertex } from './shader';
+
 export default function Model() {
   const planeRef = useRef<ShaderMaterial>(null);
+
+  const texture = useTexture('/images/hanascript.png');
+  const { width, height } = texture.image;
+
+  const scale = useAspect(width, height, 1.5);
 
   const { amplitude, waveLength } = useControls({
     amplitude: { value: 0.25, min: 0, max: 5, step: 0.1 },
@@ -13,6 +20,7 @@ export default function Model() {
 
   const uniforms = useRef({
     uTime: { value: 0 },
+    uTexture: { value: texture },
     uAmplitude: { value: amplitude },
     uWaveLength: { value: waveLength },
   });
@@ -21,13 +29,13 @@ export default function Model() {
     if (planeRef.current) {
       planeRef.current.uniforms.uWaveLength.value = waveLength;
       planeRef.current.uniforms.uAmplitude.value = amplitude;
-      planeRef.current.uniforms.uTime.value += 0.05;
+      planeRef.current.uniforms.uTime.value += 0.02;
     }
   });
 
   return (
-    <mesh scale={[3, 3, 1]}>
-      <planeGeometry args={[1, 1, 15, 15]} />
+    <mesh scale={scale}>
+      <planeGeometry args={[1, 1, 45, 45]} />
       {/* <meshBasicMaterial
         wireframe={true}
         color='red'
@@ -36,7 +44,6 @@ export default function Model() {
         ref={planeRef}
         vertexShader={vertex}
         fragmentShader={fragment}
-        wireframe={true}
         uniforms={uniforms.current}
       />
     </mesh>
