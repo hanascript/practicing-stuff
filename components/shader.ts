@@ -21,10 +21,13 @@ export const vertex = `
 
 export const fragment = `
   uniform sampler2D uTexture;
+  uniform vec2 vUvScale;
   varying vec2 vUv;
 
   void main() {
-    vec4 color = texture2D(uTexture, vUv);
+    vec2 uv = (vUv - 0.5) * vUvScale + 0.5;
+
+    vec4 color = texture2D(uTexture, uv);
 
     gl_FragColor = color;
   }
